@@ -207,11 +207,15 @@
     <script>
         async function fetchImageAndSetBackground(elementId, prompt) {
             const payload = {
-                instances: [{ prompt: prompt }],
-                parameters: { "sampleCount": 1 }
+                contents: [{
+                    parts: [{ text: prompt }]
+                }],
+                generationConfig: {
+                    responseModalities: ['TEXT', 'IMAGE']
+                },
             };
             const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
             
             try {
                 const response = await fetch(apiUrl, {
@@ -225,7 +229,7 @@
                 }
                 
                 const result = await response.json();
-                const base64Data = result?.predictions?.[0]?.bytesBase64Encoded;
+                const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
                 
                 if (base64Data) {
                     const imageUrl = `data:image/png;base64,${base64Data}`;
@@ -242,10 +246,10 @@
         }
 
         window.onload = function() {
-            fetchImageAndSetBackground('about', 'A serene and strong image representing health and peace of mind. A stylized, calm figure meditating in a sunlit, peaceful garden. The style should be minimalist, warm, and inviting with soft gradients.');
-            fetchImageAndSetBackground('services', 'An image symbolizing wealth, growth, and opportunity. A minimalist, elegant abstract representation of a financial graph with a gentle upward curve. The color palette should be gold and taupe, and the style should be abstract and soft.');
-            fetchImageAndSetBackground('testimonials', 'An image representing a queen, embodying leadership and empowerment. A minimalist crown with a warm, soft glow. The style should be elegant and simple, using light and shadow to create a sense of authority and grace.');
-            fetchImageAndSetBackground('join-team', 'An image symbolizing collaboration and partnership. A minimalist, warm illustration of two hands shaking, with a soft gold glow. The style should be abstract and encouraging.');
+            fetchImageAndSetBackground('about', 'A serene and tranquil image representing health and peace of mind. A soft, warm, sunlit scene.');
+            fetchImageAndSetBackground('services', 'An image symbolizing wealth and financial growth. Abstract, elegant gold and white lines moving gently upward.');
+            fetchImageAndSetBackground('testimonials', 'An image representing trust and community. Two stylized hands gently clasping, with a warm, comforting glow.');
+            fetchImageAndSetBackground('join-team', 'An image symbolizing partnership and collaboration. Two abstract figures standing together, looking towards a shared horizon.');
         };
     
         document.addEventListener('DOMContentLoaded', function() {
