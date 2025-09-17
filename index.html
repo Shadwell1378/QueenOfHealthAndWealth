@@ -97,11 +97,7 @@
     </header>
 
     <main>
-        <section id="about" class="full-screen-section" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=');">
-            <div id="loading-about" class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/80 z-20">
-                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-amber-900"></div>
-                <p class="mt-4 text-amber-900">Generating a beautiful image...</p>
-            </div>
+        <section id="about" class="full-screen-section" style="background-image: url('https://placehold.co/1920x1080/fdceb8/4a4a4a?text=Health+%26+Peace');">
             <div class="relative z-30 container mx-auto px-6 text-center">
                 <h1 class="text-4xl md:text-6xl font-bold text-amber-900 leading-tight">Secure Your Health, Build Your Wealth.</h1>
                 <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">I'm Katherine Zurlage, Baltimore's "Queen of Health and Wealth." I specialize in helping families build lasting financial security through powerful strategies like Indexed Universal Life insurance.</p>
@@ -109,11 +105,7 @@
             </div>
         </section>
 
-        <section id="services" class="full-screen-section" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANBUEAAAASUVORK5CYII=');">
-            <div id="loading-services" class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/80 z-20">
-                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-amber-900"></div>
-                <p class="mt-4 text-amber-900">Generating a beautiful image...</p>
-            </div>
+        <section id="services" class="full-screen-section" style="background-image: url('https://placehold.co/1920x1080/fdceb8/4a4a4a?text=Wealth+%26+Growth');">
             <div class="relative z-30 container mx-auto px-6 text-center">
                  <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl md:text-4xl font-bold text-amber-900">Understanding Indexed Universal Life (IUL)</h2>
@@ -141,11 +133,7 @@
             </div>
         </section>
 
-        <section id="testimonials" class="full-screen-section" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=');">
-            <div id="loading-testimonials" class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/80 z-20">
-                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-amber-900"></div>
-                <p class="mt-4 text-amber-900">Generating a beautiful image...</p>
-            </div>
+        <section id="testimonials" class="full-screen-section" style="background-image: url('https://placehold.co/1920x1080/fdceb8/4a4a4a?text=Trust+%26+Community');">
             <div class="relative z-30 container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-amber-900">What My Clients Say</h2>
                 <p class="mt-4 text-gray-600">Building trust and delivering results is my top priority. Here’s what some of my clients in the Baltimore community have to say.</p>
@@ -162,11 +150,7 @@
             </div>
         </section>
 
-        <section id="join-team" class="full-screen-section" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=');">
-            <div id="loading-join-team" class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/80 z-20">
-                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-amber-900"></div>
-                <p class="mt-4 text-amber-900">Generating a beautiful image...</p>
-            </div>
+        <section id="join-team" class="full-screen-section" style="background-image: url('https://placehold.co/1920x1080/fdceb8/4a4a4a?text=Partnership+%26+Growth');">
             <div class="relative z-30 container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-amber-900">Become a Financial Champion</h2>
                 <p class="mt-4 text-gray-600 max-w-3xl mx-auto">Do you have a passion for helping families build financial freedom? Are you a motivated professional looking for a rewarding career with unlimited growth? Join our team and start your journey as a financial champion.</p>
@@ -204,63 +188,6 @@
     </footer>
 
     <script>
-        // Use fetch to get the image from the API and set it as the background with retries
-        async function fetchImageAndSetBackground(elementId, prompt, maxRetries = 5, initialDelay = 1000) {
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: {
-                    responseModalities: ['TEXT', 'IMAGE']
-                },
-            };
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
-            
-            let retries = 0;
-            while (retries < maxRetries) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) {
-                        throw new Error(`API returned status ${response.status}`);
-                    }
-                    
-                    const result = await response.json();
-                    const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
-                    
-                    if (base64Data) {
-                        const imageUrl = `data:image/png;base64,${base64Data}`;
-                        document.getElementById(elementId).style.backgroundImage = `url('${imageUrl}')`;
-                        document.getElementById(`loading-${elementId}`).style.display = 'none'; // Hide loading indicator
-                        return; // Success, exit the function
-                    } else {
-                        throw new Error('No base64 data found in API response.');
-                    }
-
-                } catch (error) {
-                    console.error(`Attempt ${retries + 1} failed for ${elementId}:`, error);
-                    retries++;
-                    if (retries < maxRetries) {
-                        const delay = initialDelay * Math.pow(2, retries - 1);
-                        await new Promise(res => setTimeout(res, delay));
-                    }
-                }
-            }
-            
-            // If the loop finishes without success
-            document.getElementById(`loading-${elementId}`).innerHTML = `<p class="mt-4 text-amber-900">Failed to load image after multiple attempts. Please try again later.</p>`;
-        }
-
-        window.onload = function() {
-            fetchImageAndSetBackground('about', 'A serene and strong image representing health and peace of mind. A stylized, calm figure meditating in a sunlit, peaceful garden. The style should be minimalist, warm, and inviting with soft gradients.');
-            fetchImageAndSetBackground('services', 'An image symbolizing wealth, growth, and opportunity. A minimalist, elegant abstract representation of a financial graph with a gentle upward curve. The color palette should be gold and taupe, and the style should be abstract and soft.');
-            fetchImageAndSetBackground('testimonials', 'An image representing a queen, embodying leadership and empowerment. A minimalist crown with a warm, soft glow. The style should be elegant and simple, using light and shadow to create a sense of authority and grace.');
-            fetchImageAndSetBackground('join-team', 'An image symbolizing collaboration and partnership. A minimalist, warm illustration of two hands shaking, with a soft gold glow. The style should be abstract and encouraging.');
-        };
-    
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
