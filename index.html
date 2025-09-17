@@ -233,18 +233,25 @@
                     retryCount++;
                 }
                 
-                const result = await response.json();
-                const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
-                if (base64Data) {
-                    const imageUrl = `data:image/png;base64,${base64Data}`;
-                    document.getElementById(elementId).style.backgroundImage = `url('${imageUrl}')`;
-                    document.getElementById(`loading-${elementId}`).style.display = 'none'; // Hide loading indicator
-                } else {
-                    console.error('Image generation failed:', result);
+                // Add a new try/catch block to handle potential JSON parsing errors
+                try {
+                    const result = await response.json();
+                    const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+                    if (base64Data) {
+                        const imageUrl = `data:image/png;base64,${base64Data}`;
+                        document.getElementById(elementId).style.backgroundImage = `url('${imageUrl}')`;
+                        document.getElementById(`loading-${elementId}`).style.display = 'none'; // Hide loading indicator
+                    } else {
+                        console.error('Image generation failed: No base64 data found in response', result);
+                        document.getElementById(`loading-${elementId}`).innerHTML = `<p class="mt-4 text-amber-900">Failed to load image. Please try again.</p>`;
+                    }
+                } catch (jsonError) {
+                    console.error('API call failed: JSON parsing error', jsonError);
                     document.getElementById(`loading-${elementId}`).innerHTML = `<p class="mt-4 text-amber-900">Failed to load image. Please try again.</p>`;
                 }
-            } catch (error) {
-                console.error('API call failed:', error);
+
+            } catch (networkError) {
+                console.error('API call failed: Network error', networkError);
                 document.getElementById(`loading-${elementId}`).innerHTML = `<p class="mt-4 text-amber-900">Failed to load image. Please try again.</p>`;
             }
         }
