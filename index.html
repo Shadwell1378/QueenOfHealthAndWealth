@@ -10,9 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Warm Taupe and Gold -->
-    <!-- Application Structure Plan: A single-page website with a sequential, full-screen scrolling narrative. The user scrolls through a series of full-page sections, each with a unique background image and a key message. The structure is: Hero (brand introduction with a "health" image), Services (explaining IUL with a "wealth" image), and Testimonials (social proof with a "queen" image). This "scroll-story" design is highly engaging and creates an immersive experience that builds trust and authority with each new section. -->
-    <!-- Visualization & Content Choices: Report Info: IUL growth potential -> Goal: Illustrate long-term financial benefits -> Viz/Method: Interactive Line Chart (Chart.js/Canvas) -> Interaction: Users can view hypothetical growth over 30 years, comparing it to a standard savings account. This makes an abstract concept tangible. Report Info: Benefits of IUL -> Goal: Inform concisely -> Method: Styled HTML cards with icons -> Interaction: Hover effects to engage the user. This breaks down complex info into digestible chunks. No SVG/Mermaid used. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -29,7 +26,6 @@
             background-size: cover;
             background-position: center;
             position: relative;
-            transition: background-image 0.5s ease-in-out;
         }
         .full-screen-section::before {
             content: '';
@@ -38,15 +34,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Default overlay opacity for all sections */
             background-color: rgba(253, 251, 248, 0.65);
             z-index: 1;
         }
-        /* Specific rule to make the hero section overlay more transparent */
         #about::before {
             background-color: rgba(253, 251, 248, 0.45);
         }
-        /* Specific rule for the services section */
         #services::before {
             background-color: rgba(253, 251, 248, 0.45);
         }
@@ -98,11 +91,7 @@
     </header>
 
     <main>
-        <section id="about" class="full-screen-section" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=');">
-            <div id="loading-about" class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/80 z-20">
-                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-amber-900"></div>
-                <p class="mt-4 text-amber-900">Generating a beautiful image...</p>
-            </div>
+        <section id="about" class="full-screen-section" style="background-image: url('serene.png');">
             <div class="relative z-30 container mx-auto px-6 text-center">
                 <h1 class="text-4xl md:text-6xl font-bold text-amber-900 leading-tight">Secure Your Health, Build Your Wealth.</h1>
                 <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">I'm Katherine Zurlage, Baltimore's "Queen of Health and Wealth." I specialize in helping families build lasting financial security through powerful strategies like Indexed Universal Life insurance.</p>
@@ -110,11 +99,7 @@
             </div>
         </section>
 
-        <section id="services" class="full-screen-section" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANBUEAAAASUVORK5CYII=');">
-            <div id="loading-services" class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/80 z-20">
-                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-amber-900"></div>
-                <p class="mt-4 text-amber-900">Generating a beautiful image...</p>
-            </div>
+        <section id="services" class="full-screen-section" style="background-image: url('upward.png');">
             <div class="relative z-30 container mx-auto px-6 text-center">
                  <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl md:text-4xl font-bold text-amber-900">Understanding Indexed Universal Life (IUL)</h2>
@@ -142,11 +127,7 @@
             </div>
         </section>
 
-        <section id="testimonials" class="full-screen-section" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=');">
-            <div id="loading-testimonials" class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/80 z-20">
-                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-amber-900"></div>
-                <p class="mt-4 text-amber-900">Generating a beautiful image...</p>
-            </div>
+        <section id="testimonials" class="full-screen-section" style="background-image: url('shake.png');">
             <div class="relative z-30 container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-amber-900">What My Clients Say</h2>
                 <p class="mt-4 text-gray-600">Building trust and delivering results is my top priority. Here’s what some of my clients in the Baltimore community have to say.</p>
@@ -163,11 +144,7 @@
             </div>
         </section>
 
-        <section id="join-team" class="full-screen-section" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=');">
-            <div id="loading-join-team" class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/80 z-20">
-                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-amber-900"></div>
-                <p class="mt-4 text-amber-900">Generating a beautiful image...</p>
-            </div>
+        <section id="join-team" class="full-screen-section" style="background-image: url('team.png');">
             <div class="relative z-30 container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-amber-900">Become a Financial Champion</h2>
                 <p class="mt-4 text-gray-600 max-w-3xl mx-auto">Do you have a passion for helping families build financial freedom? Are you a motivated professional looking for a rewarding career with unlimited growth? Join our team and start your journey as a financial champion.</p>
@@ -205,53 +182,6 @@
     </footer>
 
     <script>
-        async function fetchImageAndSetBackground(elementId, prompt) {
-            const payload = {
-                contents: [{
-                    parts: [{ text: prompt }]
-                }],
-                generationConfig: {
-                    responseModalities: ['TEXT', 'IMAGE']
-                },
-            };
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
-            
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`API returned status ${response.status}`);
-                }
-                
-                const result = await response.json();
-                const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
-                
-                if (base64Data) {
-                    const imageUrl = `data:image/png;base64,${base64Data}`;
-                    document.getElementById(elementId).style.backgroundImage = `url('${imageUrl}')`;
-                    document.getElementById(`loading-${elementId}`).style.display = 'none'; // Hide loading indicator
-                } else {
-                    console.error('Image generation failed: No base64 data found in response.');
-                    document.getElementById(`loading-${elementId}`).innerHTML = `<p class="mt-4 text-amber-900">Failed to load image. Please try again later.</p>`;
-                }
-            } catch (error) {
-                console.error('API call failed:', error);
-                document.getElementById(`loading-${elementId}`).innerHTML = `<p class="mt-4 text-amber-900">Failed to load image. Please try again later.</p>`;
-            }
-        }
-
-        window.onload = function() {
-            fetchImageAndSetBackground('about', 'A serene and tranquil image representing health and peace of mind. A soft, warm, sunlit scene.');
-            fetchImageAndSetBackground('services', 'An image symbolizing wealth and financial growth. Abstract, elegant gold and white lines moving gently upward.');
-            fetchImageAndSetBackground('testimonials', 'An image representing trust and community. Two stylized hands gently clasping, with a warm, comforting glow.');
-            fetchImageAndSetBackground('join-team', 'An image symbolizing partnership and collaboration. Two abstract figures standing together, looking towards a shared horizon.');
-        };
-    
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
