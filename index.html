@@ -204,8 +204,8 @@
     </footer>
 
     <script>
-        // Use fetch to get the image from the API and set it as the background
-        async function fetchImageAndSetBackground(elementId, prompt) {
+        // Use fetch to get the image from the API and set it as the background with retries
+        async function fetchImageAndSetBackground(elementId, prompt, maxRetries = 5, initialDelay = 1000) {
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
                 generationConfig: {
@@ -215,45 +215,43 @@
             const apiKey = "";
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
             
-            try {
-                let response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                let retryCount = 0;
-                while (!response.ok && response.status === 429 && retryCount < 5) {
-                    await new Promise(res => setTimeout(res, Math.pow(2, retryCount) * 1000));
-                    response = await fetch(apiUrl, {
+            let retries = 0;
+            while (retries < maxRetries) {
+                try {
+                    const response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
-                    retryCount++;
-                }
-                
-                // Add a new try/catch block to handle potential JSON parsing errors
-                try {
+                    
+                    if (!response.ok) {
+                        throw new Error(`API returned status ${response.status}`);
+                    }
+                    
                     const result = await response.json();
                     const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+                    
                     if (base64Data) {
                         const imageUrl = `data:image/png;base64,${base64Data}`;
                         document.getElementById(elementId).style.backgroundImage = `url('${imageUrl}')`;
                         document.getElementById(`loading-${elementId}`).style.display = 'none'; // Hide loading indicator
+                        return; // Success, exit the function
                     } else {
-                        console.error('Image generation failed: No base64 data found in response', result);
-                        document.getElementById(`loading-${elementId}`).innerHTML = `<p class="mt-4 text-amber-900">Failed to load image. Please try again.</p>`;
+                        throw new Error('No base64 data found in API response.');
                     }
-                } catch (jsonError) {
-                    console.error('API call failed: JSON parsing error', jsonError);
-                    document.getElementById(`loading-${elementId}`).innerHTML = `<p class="mt-4 text-amber-900">Failed to load image. Please try again.</p>`;
-                }
 
-            } catch (networkError) {
-                console.error('API call failed: Network error', networkError);
-                document.getElementById(`loading-${elementId}`).innerHTML = `<p class="mt-4 text-amber-900">Failed to load image. Please try again.</p>`;
+                } catch (error) {
+                    console.error(`Attempt ${retries + 1} failed for ${elementId}:`, error);
+                    retries++;
+                    if (retries < maxRetries) {
+                        const delay = initialDelay * Math.pow(2, retries - 1);
+                        await new Promise(res => setTimeout(res, delay));
+                    }
+                }
             }
+            
+            // If the loop finishes without success
+            document.getElementById(`loading-${elementId}`).innerHTML = `<p class="mt-4 text-amber-900">Failed to load image after multiple attempts. Please try again later.</p>`;
         }
 
         window.onload = function() {
