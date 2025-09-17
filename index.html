@@ -42,7 +42,7 @@
             z-index: 1;
         }
         /* Specific rule to make the hero section overlay more transparent */
-        #hero::before {
+        #about::before {
             background-color: rgba(253, 251, 248, 0.45);
         }
         /* Specific rule for the services section */
@@ -97,8 +97,8 @@
     </header>
 
     <main>
-        <section id="hero" class="full-screen-section" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=');">
-            <div id="loading-hero" class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/80 z-20">
+        <section id="about" class="full-screen-section" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=');">
+            <div id="loading-about" class="absolute inset-0 flex flex-col items-center justify-center bg-amber-50/80 z-20">
                 <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-amber-900"></div>
                 <p class="mt-4 text-amber-900">Generating a beautiful image...</p>
             </div>
@@ -250,7 +250,7 @@
         }
 
         window.onload = function() {
-            fetchImageAndSetBackground('hero', 'A serene and strong image representing health and peace of mind. A stylized, calm figure meditating in a sunlit, peaceful garden. The style should be minimalist, warm, and inviting with soft gradients.');
+            fetchImageAndSetBackground('about', 'A serene and strong image representing health and peace of mind. A stylized, calm figure meditating in a sunlit, peaceful garden. The style should be minimalist, warm, and inviting with soft gradients.');
             fetchImageAndSetBackground('services', 'An image symbolizing wealth, growth, and opportunity. A minimalist, elegant abstract representation of a financial graph with a gentle upward curve. The color palette should be gold and taupe, and the style should be abstract and soft.');
             fetchImageAndSetBackground('testimonials', 'An image representing a queen, embodying leadership and empowerment. A minimalist crown with a warm, soft glow. The style should be elegant and simple, using light and shadow to create a sense of authority and grace.');
             fetchImageAndSetBackground('join-team', 'An image symbolizing collaboration and partnership. A minimalist, warm illustration of two hands shaking, with a soft gold glow. The style should be abstract and encouraging.');
