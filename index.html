@@ -3,110 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Life Insurance & Retirement Solutions</title>
+  <title>Katherine - Queen of Health & Wealth</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth; }
-    .full-screen-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      position: relative;
-    }
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-    }
-    .content { position: relative; z-index: 1; }
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-  <!-- Hero Section -->
-  <section class="full-screen-section" style="background-image: url('lifeinsurance.png');">
-    <div class="overlay"></div>
-    <div class="content fade-up">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Life Insurance & Retirement Solutions</h1>
-      <p class="text-lg md:text-2xl mb-6">Protect your family. Secure your future. Build wealth tax-free.</p>
-      <a href="#contact" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition">Get a Free Consultation</a>
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-white/90 backdrop-blur shadow z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+      <h1 class="text-xl font-bold text-amber-800">Queen of Health & Wealth</h1>
+      <div class="space-x-6 hidden md:flex">
+        <a href="#about" class="hover:text-amber-700">About</a>
+        <a href="#services" class="hover:text-amber-700">Services</a>
+        <a href="#video" class="hover:text-amber-700">Video</a>
+        <a href="#testimonials" class="hover:text-amber-700">Testimonials</a>
+        <a href="#join-team" class="hover:text-amber-700">Join Team</a>
+        <a href="#contact" class="bg-amber-700 text-white px-4 py-2 rounded-lg shadow hover:bg-amber-800">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero with serene.png -->
+  <section id="about" class="pt-24 bg-gray-100">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-8 px-6 py-16">
+      <img src="serene.png" alt="Peaceful Wealth" class="rounded-2xl shadow-lg">
+      <div>
+        <h2 class="text-4xl font-bold mb-4 text-amber-900">Secure Your Health, Build Your Wealth</h2>
+        <p class="text-lg mb-6 text-gray-700">True wealth isn’t just money — it’s peace of mind, knowing your family is protected and your future secure.</p>
+        <a href="#contact" class="px-6 py-3 bg-amber-700 hover:bg-amber-800 text-white rounded-lg shadow-lg">Start Today</a>
+      </div>
     </div>
   </section>
 
-  <!-- Services Section -->
+  <!-- Services with upward.png as backdrop card -->
   <section id="services" class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12 fade-up">Our Services</h2>
-      <div class="grid md:grid-cols-3 gap-10 text-center">
-        <div class="p-6 bg-gray-100 rounded-lg shadow fade-up">
-          <h3 class="text-xl font-semibold mb-4">Indexed Universal Life (IUL)</h3>
-          <p>Build wealth while protecting your loved ones with market-linked growth and downside protection.</p>
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-amber-900 mb-12">Our Services</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="relative bg-gray-100 rounded-xl shadow-lg p-6">
+          <img src="upward.png" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-xl" alt="Growth Background">
+          <div class="relative">
+            <h3 class="text-xl font-semibold mb-2">Indexed Universal Life</h3>
+            <p>Build wealth with market-linked growth while protecting your loved ones.</p>
+          </div>
         </div>
-        <div class="p-6 bg-gray-100 rounded-lg shadow fade-up">
-          <h3 class="text-xl font-semibold mb-4">Retirement Planning</h3>
-          <p>Grow your retirement fund tax-free and ensure you never run out of money in retirement.</p>
+        <div class="relative bg-gray-100 rounded-xl shadow-lg p-6">
+          <img src="upward.png" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-xl" alt="Growth Background">
+          <div class="relative">
+            <h3 class="text-xl font-semibold mb-2">Retirement Planning</h3>
+            <p>Grow your retirement fund tax-free and never run out of income.</p>
+          </div>
         </div>
-        <div class="p-6 bg-gray-100 rounded-lg shadow fade-up">
-          <h3 class="text-xl font-semibold mb-4">Tax-Free Wealth Strategy</h3>
-          <p>You can typically access the cash value through tax-free loans and withdrawals for any purpose.</p>
+        <div class="relative bg-gray-100 rounded-xl shadow-lg p-6">
+          <img src="upward.png" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-xl" alt="Growth Background">
+          <div class="relative">
+            <h3 class="text-xl font-semibold mb-2">Tax-Free Wealth</h3>
+            <p>Access cash value through tax-free loans and withdrawals for any purpose.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Team Section -->
-  <section id="join-team" class="full-screen-section" style="background-image: url('team.png');">
-    <div class="overlay"></div>
-    <div class="content fade-up">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Join Our Team</h2>
-      <p class="text-lg md:text-xl mb-6">Become part of a mission-driven organization helping families achieve financial security.</p>
-      <a href="#contact" class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg transition">Apply Now</a>
+  <!-- Video with star.png -->
+  <section id="video" class="bg-gray-100">
+    <div class="max-w-4xl mx-auto text-center px-6 py-16">
+      <h2 class="text-3xl font-bold text-amber-900 mb-8">Learn About IUL</h2>
+      <div class="relative">
+        <img src="star.png" alt="Video Background" class="w-full h-64 object-cover rounded-xl shadow-lg opacity-40">
+        <iframe class="absolute top-0 left-0 w-full h-64 rounded-xl"
+          src="https://www.youtube.com/embed/kw7BosK6X2k?rel=0&amp;autoplay=0&amp;mute=0&amp;loop=1&amp;playlist=kw7BosK6X2k"
+          frameborder="0"
+          allowfullscreen></iframe>
+      </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 bg-gray-100">
-    <div class="max-w-3xl mx-auto px-6 text-center fade-up">
+  <!-- Testimonials with shake.png -->
+  <section id="testimonials" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-amber-900 mb-12">What Clients Say</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="relative bg-gray-100 p-8 rounded-lg shadow-md">
+          <img src="shake.png" alt="Handshake" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-lg">
+          <div class="relative">
+            <p class="italic">“Katie made the complex world of IULs so easy to understand. We finally feel confident about our future.”</p>
+            <p class="mt-4 font-bold text-amber-900">– Sarah M.</p>
+          </div>
+        </div>
+        <div class="relative bg-gray-100 p-8 rounded-lg shadow-md">
+          <img src="shake.png" alt="Handshake" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-lg">
+          <div class="relative">
+            <p class="italic">“Katherine isn’t just an agent; she’s an advisor who truly cares. She helped us protect both health and wealth.”</p>
+            <p class="mt-4 font-bold text-amber-900">– David R.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team with teaam.png -->
+  <section id="join-team" class="bg-gray-100">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-8 px-6 py-16">
+      <div>
+        <h2 class="text-4xl font-bold mb-4 text-amber-900">Join Our Team</h2>
+        <p class="text-lg mb-6 text-gray-700">Become a financial champion and help families build financial freedom while growing your career.</p>
+        <a href="#contact" class="px-6 py-3 bg-amber-700 hover:bg-amber-800 text-white rounded-lg shadow-lg">Apply Now</a>
+      </div>
+      <img src="teaam.png" alt="Our Team" class="rounded-2xl shadow-lg">
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 bg-amber-800 text-white">
+    <div class="max-w-3xl mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
-      <p class="mb-6">Get in touch to learn more about our services and how we can help you secure your financial future.</p>
-      <a id="email-button" href="mailto:i4wk8z@gmail.com" class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition">
+      <p class="mb-6">Let’s explore how a tailored strategy can help you protect your health and build lasting wealth.</p>
+      <a id="email-button" href="mailto:i4wk8z@gmail.com" class="inline-flex items-center px-6 py-3 bg-white text-amber-800 font-semibold rounded-lg shadow-lg">
         📧 <span id="button-text" class="ml-2">Email Us</span>
       </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-6 text-center">
-    <p>&copy; 2024 Life Insurance & Retirement Solutions. All rights reserved.</p>
+  <footer class="bg-gray-900 text-white py-6 text-center text-sm">
+    <p>&copy; 2024 Katherine - Queen of Health & Wealth. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Clipboard Fix -->
   <script>
-    // Animate on scroll
-    const faders = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-
-    faders.forEach(fader => observer.observe(fader));
-
-    // Clipboard copy + email open
     document.getElementById('email-button').addEventListener('click', async function(event) {
       event.preventDefault();
       const email = 'i4wk8z@gmail.com';
@@ -124,3 +152,4 @@
   </script>
 </body>
 </html>
+
