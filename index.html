@@ -7,15 +7,21 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth; }
+    .bg-section {
+      @apply relative bg-cover bg-center bg-no-repeat;
+    }
+    .overlay {
+      @apply absolute inset-0 bg-black bg-opacity-50;
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="text-gray-100">
 
   <!-- Navbar -->
   <nav class="fixed top-0 w-full bg-white/90 backdrop-blur shadow z-50">
     <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
       <h1 class="text-xl font-bold text-amber-800">Queen of Health & Wealth</h1>
-      <div class="space-x-6 hidden md:flex">
+      <div class="space-x-6 hidden md:flex text-gray-800">
         <a href="#about" class="hover:text-amber-700">About</a>
         <a href="#services" class="hover:text-amber-700">Services</a>
         <a href="#video" class="hover:text-amber-700">Video</a>
@@ -26,55 +32,48 @@
     </div>
   </nav>
 
-  <!-- Hero with serene.png -->
-  <section id="about" class="pt-24 bg-gray-100">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-8 px-6 py-16">
-      <img src="serene.png" alt="Peaceful Wealth" class="rounded-2xl shadow-lg">
-      <div>
-        <h2 class="text-4xl font-bold mb-4 text-amber-900">Secure Your Health, Build Your Wealth</h2>
-        <p class="text-lg mb-6 text-gray-700">True wealth isn’t just money — it’s peace of mind, knowing your family is protected and your future secure.</p>
-        <a href="#contact" class="px-6 py-3 bg-amber-700 hover:bg-amber-800 text-white rounded-lg shadow-lg">Start Today</a>
+  <!-- Hero (serene.png) -->
+  <section id="about" class="bg-section" style="background-image: url('serene.png');">
+    <div class="overlay"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-32 text-center">
+      <h2 class="text-4xl font-bold mb-4 text-white">Secure Your Health, Build Your Wealth</h2>
+      <p class="text-lg mb-6 max-w-2xl mx-auto">True wealth isn’t just money — it’s peace of mind, knowing your family is protected and your future secure.</p>
+      <div class="flex justify-center gap-4">
+        <a href="#contact" class="px-6 py-3 bg-amber-700 hover:bg-amber-800 text-white rounded-lg shadow-lg">Get Started</a>
+        <a href="https://calendly.com/your-link" target="_blank" class="px-6 py-3 border border-white text-white hover:bg-white hover:text-amber-800 rounded-lg shadow">Book a Call</a>
       </div>
     </div>
   </section>
 
-  <!-- Services with upward.png as backdrop card -->
-  <section id="services" class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-amber-900 mb-12">Our Services</h2>
-      <div class="grid md:grid-cols-3 gap-10">
-        <div class="relative bg-gray-100 rounded-xl shadow-lg p-6">
-          <img src="upward.png" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-xl" alt="Growth Background">
-          <div class="relative">
-            <h3 class="text-xl font-semibold mb-2">Indexed Universal Life</h3>
-            <p>Build wealth with market-linked growth while protecting your loved ones.</p>
-          </div>
+  <!-- Services (upward.png) -->
+  <section id="services" class="bg-section" style="background-image: url('upward.png');">
+    <div class="overlay"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-32 text-center">
+      <h2 class="text-3xl font-bold text-white mb-12">Our Services</h2>
+      <div class="grid md:grid-cols-3 gap-10 text-left">
+        <div class="bg-white/20 backdrop-blur p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Indexed Universal Life</h3>
+          <p>Build wealth with market-linked growth while protecting your loved ones.</p>
         </div>
-        <div class="relative bg-gray-100 rounded-xl shadow-lg p-6">
-          <img src="upward.png" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-xl" alt="Growth Background">
-          <div class="relative">
-            <h3 class="text-xl font-semibold mb-2">Retirement Planning</h3>
-            <p>Grow your retirement fund tax-free and never run out of income.</p>
-          </div>
+        <div class="bg-white/20 backdrop-blur p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Retirement Planning</h3>
+          <p>Grow your retirement fund tax-free and never run out of income.</p>
         </div>
-        <div class="relative bg-gray-100 rounded-xl shadow-lg p-6">
-          <img src="upward.png" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-xl" alt="Growth Background">
-          <div class="relative">
-            <h3 class="text-xl font-semibold mb-2">Tax-Free Wealth</h3>
-            <p>Access cash value through tax-free loans and withdrawals for any purpose.</p>
-          </div>
+        <div class="bg-white/20 backdrop-blur p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Tax-Free Wealth</h3>
+          <p>Access cash value through tax-free loans and withdrawals for any purpose.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Video with star.png -->
-  <section id="video" class="bg-gray-100">
-    <div class="max-w-4xl mx-auto text-center px-6 py-16">
-      <h2 class="text-3xl font-bold text-amber-900 mb-8">Learn About IUL</h2>
-      <div class="relative">
-        <img src="star.png" alt="Video Background" class="w-full h-64 object-cover rounded-xl shadow-lg opacity-40">
-        <iframe class="absolute top-0 left-0 w-full h-64 rounded-xl"
+  <!-- Video (star.png) -->
+  <section id="video" class="bg-section" style="background-image: url('star.png');">
+    <div class="overlay"></div>
+    <div class="relative max-w-4xl mx-auto text-center px-6 py-32">
+      <h2 class="text-3xl font-bold text-white mb-8">Learn About IUL</h2>
+      <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-lg">
+        <iframe class="w-full h-80"
           src="https://www.youtube.com/embed/kw7BosK6X2k?rel=0&amp;autoplay=0&amp;mute=0&amp;loop=1&amp;playlist=kw7BosK6X2k"
           frameborder="0"
           allowfullscreen></iframe>
@@ -82,38 +81,36 @@
     </div>
   </section>
 
-  <!-- Testimonials with shake.png -->
-  <section id="testimonials" class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-amber-900 mb-12">What Clients Say</h2>
+  <!-- Testimonials (shake.png) -->
+  <section id="testimonials" class="bg-section" style="background-image: url('shake.png');">
+    <div class="overlay"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-32 text-center">
+      <h2 class="text-3xl font-bold text-white mb-12">What Clients Say</h2>
       <div class="grid md:grid-cols-2 gap-8">
-        <div class="relative bg-gray-100 p-8 rounded-lg shadow-md">
-          <img src="shake.png" alt="Handshake" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-lg">
-          <div class="relative">
-            <p class="italic">“Katie made the complex world of IULs so easy to understand. We finally feel confident about our future.”</p>
-            <p class="mt-4 font-bold text-amber-900">– Sarah M.</p>
-          </div>
+        <div class="bg-white/20 backdrop-blur p-8 rounded-lg shadow-md">
+          <p class="italic">“Katie made the complex world of IULs so easy to understand. We finally feel confident about our future.”</p>
+          <p class="mt-4 font-bold text-white">– Sarah M.</p>
         </div>
-        <div class="relative bg-gray-100 p-8 rounded-lg shadow-md">
-          <img src="shake.png" alt="Handshake" class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-lg">
-          <div class="relative">
-            <p class="italic">“Katherine isn’t just an agent; she’s an advisor who truly cares. She helped us protect both health and wealth.”</p>
-            <p class="mt-4 font-bold text-amber-900">– David R.</p>
-          </div>
+        <div class="bg-white/20 backdrop-blur p-8 rounded-lg shadow-md">
+          <p class="italic">“Katherine isn’t just an agent; she’s an advisor who truly cares. She helped us protect both health and wealth.”</p>
+          <p class="mt-4 font-bold text-white">– David R.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Team with teaam.png -->
-  <section id="join-team" class="bg-gray-100">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-8 px-6 py-16">
-      <div>
-        <h2 class="text-4xl font-bold mb-4 text-amber-900">Join Our Team</h2>
-        <p class="text-lg mb-6 text-gray-700">Become a financial champion and help families build financial freedom while growing your career.</p>
-        <a href="#contact" class="px-6 py-3 bg-amber-700 hover:bg-amber-800 text-white rounded-lg shadow-lg">Apply Now</a>
+  <!-- Team (teaam.png) -->
+  <section id="join-team" class="bg-section" style="background-image: url('teaam.png');">
+    <div class="overlay"></div>
+    <div class="relative max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-8 px-6 py-32">
+      <div class="bg-white/20 backdrop-blur p-8 rounded-xl shadow">
+        <h2 class="text-4xl font-bold mb-4 text-white">Join Our Team</h2>
+        <p class="text-lg mb-6">Become a financial champion and help families build financial freedom while growing your career.</p>
+        <div class="flex gap-4">
+          <a href="https://your-application-link.com" target="_blank" class="px-6 py-3 bg-amber-700 hover:bg-amber-800 text-white rounded-lg shadow-lg">Apply Now</a>
+          <a href="https://calendly.com/your-link" target="_blank" class="px-6 py-3 border border-white text-white hover:bg-white hover:text-amber-800 rounded-lg shadow">Schedule Interview</a>
+        </div>
       </div>
-      <img src="teaam.png" alt="Our Team" class="rounded-2xl shadow-lg">
     </div>
   </section>
 
@@ -152,4 +149,3 @@
   </script>
 </body>
 </html>
-
